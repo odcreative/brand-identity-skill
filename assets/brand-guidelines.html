@@ -1,0 +1,320 @@
+<!doctype html>
+<!--
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │  BRAND GUIDELINES DECK  —  brand-identity skill  (Radesk structure)       │
+  │                                                                           │
+  │  Each <section class="screen"> is one 16:9 page. Scroll to review;        │
+  │  print to PDF (each screen breaks to its own page).                       │
+  │                                                                           │
+  │  HOW TO USE                                                               │
+  │  1. Copy to  <brand>-brand/brand-guidelines.html                          │
+  │  2. Edit :root tokens + the text/SVG in each screen.                      │
+  │  3. Add / remove screens to match scope (see references/                  │
+  │     guidelines-structure.md for the full canonical section list).         │
+  │  4. Preview / print-to-PDF, or publish via the Artifact tool              │
+  │     (load `artifact-design`, use a body-only copy).                       │
+  └─────────────────────────────────────────────────────────────────────────┘
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand Guidelines</title>
+<style>
+  :root{
+    --anchor:#1c1440; --accent:#6d4aff; --accent-2:#ff8a3d;
+    --paper:#ffffff; --panel:#f4f2fb; --ink:#17131f; --ink-soft:#7a7490; --line:#e7e3f2;
+    --font-display:"Manrope","Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ background:#d9d5e8; font-family:var(--font-body); color:var(--ink);
+    -webkit-font-smoothing:antialiased; padding:28px clamp(10px,3vw,40px); }
+
+  .screen{
+    width:100%; max-width:1120px; aspect-ratio:16/9; margin:0 auto 26px;
+    background:var(--paper); border-radius:14px; overflow:hidden; position:relative;
+    padding:clamp(28px,4.4vw,60px);
+    box-shadow:0 20px 50px -30px rgba(20,10,50,.55);
+    display:flex; flex-direction:column;
+  }
+  /* page furniture */
+  .num{ position:absolute; top:26px; right:34px; font-size:12px; color:var(--ink-soft);
+    letter-spacing:.06em; font-variant-numeric:tabular-nums; }
+  .foot{ position:absolute; bottom:26px; left:34px; right:34px; display:flex;
+    justify-content:space-between; font-size:11px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-soft); }
+  .eyebrow{ font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+    font-weight:600; color:var(--ink-soft); }
+  h1{ font-family:var(--font-display); font-weight:800; letter-spacing:-.03em; line-height:1; }
+  h2{ font-family:var(--font-display); font-weight:800; letter-spacing:-.02em;
+    font-size:clamp(26px,3.4vw,40px); }
+  p{ line-height:1.55; color:var(--ink); }
+  .mut{ color:var(--ink-soft); }
+
+  /* COVER */
+  .cover{ background:var(--anchor); color:#fff; justify-content:space-between; }
+  .cover .mark{ width:76px; height:76px; color:#fff; }
+  .cover h1{ font-size:clamp(44px,8vw,104px); }
+  .cover .eyebrow{ color:rgba(255,255,255,.55); }
+  .cover .row{ display:flex; justify-content:space-between; align-items:flex-end; color:rgba(255,255,255,.6); font-size:13px; }
+
+  /* DIVIDER */
+  .divider{ background:var(--panel); justify-content:center; }
+  .divider .big{ font-family:var(--font-display); font-weight:800; font-size:clamp(60px,13vw,150px);
+    color:var(--accent); letter-spacing:-.04em; line-height:.9; }
+  .divider h2{ margin-top:6px; }
+
+  /* generic layout helpers */
+  .head{ margin-bottom:auto; }
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:30px; flex:1; align-items:center; }
+  .center{ flex:1; display:flex; align-items:center; justify-content:center; }
+  .stack{ display:flex; flex-direction:column; gap:14px; }
+
+  /* logo panels */
+  .panel{ background:var(--panel); border-radius:12px; display:flex; align-items:center; justify-content:center; height:100%; min-height:200px; }
+  .panel.anchor{ background:var(--anchor); }
+  .panel svg,.panel .wm{ max-width:70%; }
+  .wm{ font-family:var(--font-display); font-weight:800; font-size:34px; letter-spacing:-.02em; color:var(--anchor); display:flex; align-items:center; gap:14px; }
+  .wm.rev{ color:#fff; } .wm .mk{ width:44px; height:44px; }
+  .construct{ position:relative; }
+  .construct .g{ position:absolute; inset:0; background-image:
+      linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:28px 28px; opacity:.7; border-radius:12px; }
+
+  /* colour */
+  .swatches{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; flex:1; }
+  .sw{ border-radius:12px; padding:18px; display:flex; flex-direction:column; justify-content:flex-end;
+    color:#fff; min-height:150px; }
+  .sw b{ font-family:var(--font-display); font-weight:700; font-size:15px; }
+  .sw span{ font-size:11px; opacity:.82; line-height:1.5; font-variant-numeric:tabular-nums; }
+  .sw.light{ color:var(--ink); box-shadow:inset 0 0 0 1px var(--line); }
+  .ramp{ display:grid; grid-template-columns:repeat(8,1fr); gap:8px; margin-top:14px; }
+  .ramp div{ height:56px; border-radius:8px; display:flex; align-items:flex-end; padding:6px; font-size:9px; color:#fff; }
+
+  /* type */
+  .aa{ font-family:var(--font-display); font-weight:800; font-size:clamp(90px,17vw,190px);
+    color:var(--anchor); line-height:.85; letter-spacing:-.04em; }
+  .scale{ display:flex; flex-direction:column; gap:8px; }
+  .scale div{ font-family:var(--font-display); color:var(--anchor); line-height:1; letter-spacing:-.02em; white-space:nowrap; }
+  .weights{ display:flex; gap:22px; flex-wrap:wrap; font-family:var(--font-display); font-size:26px; color:var(--anchor); }
+  .weights span:nth-child(1){font-weight:300}.weights span:nth-child(2){font-weight:400}
+  .weights span:nth-child(3){font-weight:600}.weights span:nth-child(4){font-weight:700}.weights span:nth-child(5){font-weight:800}
+
+  /* applications */
+  .apps{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; flex:1; }
+  .app{ border-radius:12px; background:var(--panel); overflow:hidden; position:relative;
+    display:flex; align-items:center; justify-content:center; color:var(--ink-soft); font-size:12px;
+    min-height:160px; }
+  .app.fill{ background:var(--anchor); color:#fff; } .app.acc{ background:var(--accent); color:#fff; }
+  .app .lab{ position:absolute; bottom:12px; left:14px; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+
+  /* misuse */
+  .dont{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; flex:1; }
+  .dont .cell{ background:var(--panel); border-radius:12px; position:relative; display:flex; align-items:center; justify-content:center; min-height:120px; }
+  .dont .cell::after{ content:"✕"; position:absolute; top:8px; right:12px; color:#e0426b; font-weight:700; }
+  .dont .cell small{ position:absolute; bottom:10px; left:0; right:0; text-align:center; color:var(--ink-soft); font-size:10px; letter-spacing:.06em; text-transform:uppercase; }
+
+  @media (max-width:720px){
+    .grid2,.swatches,.apps{ grid-template-columns:1fr 1fr; }
+    .dont{ grid-template-columns:1fr 1fr; } .ramp{ grid-template-columns:repeat(4,1fr); }
+    .screen{ aspect-ratio:auto; min-height:auto; }
+  }
+  @media print{
+    body{ background:#fff; padding:0; }
+    .screen{ box-shadow:none; border-radius:0; margin:0; page-break-after:always; max-width:none; }
+  }
+
+  /* reusable demo mark */
+  .m path{ stroke-linecap:round; stroke-linejoin:round; }
+</style>
+</head>
+<body>
+
+  <!-- 0 · COVER -->
+  <section class="screen cover">
+    <div class="mark m">
+      <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="6" opacity=".35"/><path d="M32 68V32l36 36V32" stroke="currentColor" stroke-width="10"/></svg>
+    </div>
+    <div>
+      <div class="eyebrow">Version 1.0 — 2026</div>
+      <h1>Brand<br>Guidelines.</h1>
+    </div>
+    <div class="row"><span>Nova</span><span>Visual Identity System</span></div>
+  </section>
+
+  <!-- 0 · INDEX -->
+  <section class="screen">
+    <span class="num">Index</span>
+    <div class="head"><span class="eyebrow">Contents</span><h2>What's inside.</h2></div>
+    <div class="grid2" style="align-items:start">
+      <div class="stack">
+        <p><b>1.0</b> &nbsp; Brand Introduction</p>
+        <p class="mut" style="padding-left:34px">Mission · Vision · Values</p>
+        <p><b>2.0</b> &nbsp; Logo</p>
+        <p class="mut" style="padding-left:34px">Construction · Clearspace · Variants · Misuse</p>
+      </div>
+      <div class="stack">
+        <p><b>3.0</b> &nbsp; Colour</p>
+        <p class="mut" style="padding-left:34px">Primary · Grayscale · Usage</p>
+        <p><b>4.0</b> &nbsp; Typography</p>
+        <p class="mut" style="padding-left:34px">Typeface · Scale · In use</p>
+        <p><b>5.0</b> &nbsp; Applications</p>
+        <p class="mut" style="padding-left:34px">Icon · Stationery · Signage</p>
+      </div>
+    </div>
+    <div class="foot"><span>Nova — Brand Guidelines</span><span>02</span></div>
+  </section>
+
+  <!-- 1.0 · DIVIDER -->
+  <section class="screen divider">
+    <div class="big">1.0</div><h2>Brand Introduction.</h2>
+  </section>
+
+  <!-- 1.0 · MISSION / VISION -->
+  <section class="screen">
+    <span class="num">1.1</span>
+    <div class="head"><span class="eyebrow">Mission &amp; Vision</span></div>
+    <div class="grid2">
+      <div class="stack">
+        <span class="eyebrow">Mission</span>
+        <h2>We believe design should move — clear, human, and built to last.</h2>
+      </div>
+      <div class="stack">
+        <span class="eyebrow">Vision</span>
+        <h2>A world where every brand feels considered, not decorated.</h2>
+      </div>
+    </div>
+    <div class="foot"><span>Nova — Brand Guidelines</span><span>04</span></div>
+  </section>
+
+  <!-- 2.0 · DIVIDER -->
+  <section class="screen divider"><div class="big">2.0</div><h2>Logo.</h2></section>
+
+  <!-- 2.1 · PRIMARY -->
+  <section class="screen">
+    <span class="num">2.1</span>
+    <div class="head"><span class="eyebrow">Primary lockup</span><h2>The logo.</h2></div>
+    <div class="panel anchor" style="flex:1; margin-top:20px">
+      <div class="wm rev"><span class="mk m"><svg viewBox="0 0 100 100" fill="none"><path d="M32 68V32l36 36V32" stroke="#fff" stroke-width="11"/></svg></span>Nova</div>
+    </div>
+    <div class="foot"><span>Nova — Brand Guidelines</span><span>06</span></div>
+  </section>
+
+  <!-- 2.2 · CONSTRUCTION + CLEARSPACE -->
+  <section class="screen">
+    <span class="num">2.2</span>
+    <div class="head"><span class="eyebrow">Construction &amp; clearspace</span></div>
+    <div class="grid2">
+      <div class="panel construct"><div class="g"></div>
+        <div class="wm m" style="position:relative"><span class="mk"><svg viewBox="0 0 100 100" fill="none"><path d="M32 68V32l36 36V32" stroke="var(--anchor)" stroke-width="11"/></svg></span>Nova</div>
+      </div>
+      <div class="stack">
+        <p><b>Grid.</b> The mark is built on a modular grid; stroke weight and counter ratios stay constant across the family.</p>
+        <p><b>Clearspace.</b> Keep a margin of <b>1×</b> (the cap-height of the wordmark) clear on all sides. Never crowd the mark.</p>
+        <p><b>Minimum size.</b> 24 mm / 120 px for the full lockup; 16 px for the submark.</p>
+      </div>
+    </div>
+    <div class="foot"><span>Nova — Brand Guidelines</span><span>07</span></div>
+  </section>
+
+  <!-- 2.3 · VARIANTS -->
+  <section class="screen">
+    <span class="num">2.3</span>
+    <div class="head"><span class="eyebrow">Colour variants</span><h2>One system, four inks.</h2></div>
+    <div class="apps" style="grid-template-columns:repeat(4,1fr)">
+      <div class="app"><div class="wm m" style="font-size:20px"><span class="mk"><svg viewBox="0 0 100 100" fill="none"><path d="M32 68V32l36 36V32" stroke="var(--anchor)" stroke-width="11"/></svg></span>Nova</div><span class="lab">Full colour</span></div>
+      <div class="app fill"><div class="wm rev m" style="font-size:20px"><span class="mk"><svg viewBox="0 0 100 100" fill="none"><path d="M32 68V32l36 36V32" stroke="#fff" stroke-width="11"/></svg></span>Nova</div><span class="lab">Reversed</span></div>
+      <div class="app acc"><div class="wm rev m" style="font-size:20px"><span class="mk"><svg viewBox="0 0 100 100" fill="none"><path d="M32 68V32l36 36V32" stroke="#fff" stroke-width="11"/></svg></span>Nova</div><span class="lab">On accent</span></div>
+      <div class="app"><div class="wm m" style="font-size:20px; color:#000; filter:grayscale(1)"><span class="mk"><svg viewBox="0 0 100 100" fill="none"><path d="M32 68V32l36 36V32" stroke="#000" stroke-width="11"/></svg></span>Nova</div><span class="lab">Mono</span></div>
+    </div>
+    <div class="foot"><span>Nova — Brand Guidelines</span><span>08</span></div>
+  </section>
+
+  <!-- 2.4 · MISUSE -->
+  <section class="screen">
+    <span class="num">2.4</span>
+    <div class="head"><span class="eyebrow">Misuse</span><h2>Don't.</h2></div>
+    <div class="dont">
+      <div class="cell"><div class="wm m" style="font-size:16px; transform:scaleX(1.7)">Nova</div><small>Stretch</small></div>
+      <div class="cell"><div class="wm m" style="font-size:16px; transform:rotate(-14deg)">Nova</div><small>Rotate</small></div>
+      <div class="cell"><div class="wm m" style="font-size:16px; color:#e0426b">Nova</div><small>Recolour</small></div>
+      <div class="cell"><div class="wm m" style="font-size:16px; text-shadow:3px 3px 0 rgba(0,0,0,.3)">Nova</div><small>Add effects</small></div>
+    </div>
+    <div class="foot"><span>Nova — Brand Guidelines</span><span>09</span></div>
+  </section>
+
+  <!-- 3.0 · DIVIDER -->
+  <section class="screen divider"><div class="big">3.0</div><h2>Colour.</h2></section>
+
+  <!-- 3.1 · PRIMARY + RAMP -->
+  <section class="screen">
+    <span class="num">3.1</span>
+    <div class="head"><span class="eyebrow">Primary &amp; grayscale</span></div>
+    <div class="swatches" style="flex:none; margin-top:14px">
+      <div class="sw" style="background:var(--anchor)"><b>Midnight</b><span>#1C1440<br>28 20 64</span></div>
+      <div class="sw" style="background:var(--accent)"><b>Electric</b><span>#6D4AFF<br>109 74 255</span></div>
+      <div class="sw" style="background:var(--accent-2)"><b>Ember</b><span>#FF8A3D<br>255 138 61</span></div>
+      <div class="sw light" style="background:#fff"><b>Paper</b><span>#FFFFFF<br>255 255 255</span></div>
+    </div>
+    <div class="ramp">
+      <div style="background:#f4f2fb;color:#555">Cloud</div><div style="background:#d9d5e8;color:#555">Smoke</div>
+      <div style="background:#b3adce">Steel</div><div style="background:#8a83a8">Space</div>
+      <div style="background:#5f5876">Graphite</div><div style="background:#3d3750">Arsenic</div>
+      <div style="background:#231d33">Phantom</div><div style="background:#0d0a17">Black</div>
+    </div>
+    <div class="foot"><span>Nova — Brand Guidelines</span><span>11</span></div>
+  </section>
+
+  <!-- 4.0 · DIVIDER -->
+  <section class="screen divider"><div class="big">4.0</div><h2>Typography.</h2></section>
+
+  <!-- 4.1 · SPECIMEN -->
+  <section class="screen">
+    <span class="num">4.1</span>
+    <div class="head"><span class="eyebrow">Primary typeface — Manrope</span></div>
+    <div class="grid2" style="align-items:center">
+      <div class="aa">Aa</div>
+      <div class="stack">
+        <div class="weights"><span>Light</span><span>Regular</span><span>SemiBold</span><span>Bold</span><span>ExtraBold</span></div>
+        <div class="scale">
+          <div style="font-size:44px">Display</div>
+          <div style="font-size:30px">Heading</div>
+          <div style="font-size:20px">Subhead</div>
+          <div style="font-size:15px; font-family:var(--font-body); font-weight:400; color:var(--ink)">Body — set at 16px, 1.55 line-height, 45–75 characters per line for comfortable reading.</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Nova — Brand Guidelines</span><span>13</span></div>
+  </section>
+
+  <!-- 5.0 · DIVIDER -->
+  <section class="screen divider"><div class="big">5.0</div><h2>Applications.</h2></section>
+
+  <!-- 5.1 · APPLICATIONS -->
+  <section class="screen">
+    <span class="num">5.1</span>
+    <div class="head"><span class="eyebrow">In the world</span><h2>The brand, applied.</h2></div>
+    <div class="apps">
+      <div class="app acc"><span class="lab">App icon</span></div>
+      <div class="app fill"><span class="lab">Business card</span></div>
+      <div class="app"><span class="lab">Signage</span></div>
+      <div class="app fill"><span class="lab">Tote / apparel</span></div>
+      <div class="app"><span class="lab">Website</span></div>
+      <div class="app acc"><span class="lab">Packaging</span></div>
+    </div>
+    <div class="foot"><span>Nova — Brand Guidelines</span><span>15</span></div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="screen cover" style="justify-content:center; align-items:center; text-align:center">
+    <div class="stack" style="align-items:center">
+      <div class="mark m"><svg viewBox="0 0 100 100" fill="none"><path d="M32 68V32l36 36V32" stroke="#fff" stroke-width="10"/></svg></div>
+      <h2 style="color:#fff">Thank you.</h2>
+      <p style="color:rgba(255,255,255,.6)">Questions about the brand? hello@nova.brand</p>
+    </div>
+  </section>
+
+</body>
+</html>
