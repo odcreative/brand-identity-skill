@@ -13,7 +13,7 @@ description: >-
   use the `design` or `banner-design` skills for one-off graphics.
 metadata:
   author: OD Creative
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Brand Identity
@@ -43,8 +43,8 @@ Run these in order. Load the linked reference file when you reach each step (don
 2. **Visual direction** → `references/logo-system.md`, `references/color-systems.md`, `references/reference-library.md`, `references/typography.md`, `references/logo-archive.md`
    Choose mark archetype(s), a colour system (anchor + accent + neutrals, four-layer palette), and type roles. For the archive look, start from a proven **duotone recipe** (`reference-library.md` §3) and a heavy geometric sans (Gilroy/Montserrat/Outfit). **For tech/B2B briefs, before locking the anchor:** `logo_archive.py palette <sector>` for the convention, then `logo_archive.py search --color <candidate>` — ΔE < 10 against a same-sector brand is a collision, so move or own it deliberately. Record the reasoning in the brief. Lock the **design tokens** (HEX/RGB + font families) now.
 
-3. **Logo concepts** → `references/image-generation.md`, `references/reference-library.md`
-   Produce **2–3 distinct concepts** (different archetypes — e.g. monogram vs. negative-space vs. wordmark). For this style, the core fork is **one character/mascot concept vs. one geometric/negative-space concept** (`reference-library.md` §2). Present them; let the user pick. Prefer hand-authored **SVG** for geometric marks; else Figma / Magnific. Always on white/transparent.
+3. **Logo concepts** → `references/image-generation.md`, `references/reference-library.md`, `references/presentation-formats.md`
+   Produce **2–3 distinct concepts** (different archetypes — e.g. monogram vs. negative-space vs. wordmark). For this style, the core fork is **one character/mascot concept vs. one geometric/negative-space concept** (`reference-library.md` §2). Prefer hand-authored **SVG** for geometric marks; else Figma / Magnific. Always on white/transparent. Past a handful of files, **emit the family from a generator** (`_kaynak/gen_logo.py`) and outline logotypes with uharfbuzz + fontTools rather than shipping `<text>` — `logo-system.md` § "Build the family from a script". Present as a **concept-direction deck** with a named direction per page and a stated recommendation (`presentation-formats.md` §9), then stop: nothing downstream starts before the user picks.
 
 4. **Logo system** → `references/logo-system.md`
    Build out the winner: primary + horizontal + vertical lockups, submark, monogram, construction grid, clearspace (in `X` units), min sizes, and colour variants (full / reversed / mono / on-image). Real shipped proportions to design against (`logo-archive.md`): **submarks are square** (median 1.000), **horizontal lockups ≈4:1** (median 4.23) and ≈4× their own icon's width.

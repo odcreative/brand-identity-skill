@@ -60,8 +60,28 @@ Show the mark built on geometry — this is a signature page in the Radesk guide
 
 Always ship a misuse page in guidelines. Standard forbidden moves: don't stretch/distort, don't rotate, don't recolour outside the palette, don't add shadows/outlines/gradients not in the system, don't place on low-contrast backgrounds, don't rearrange the lockup, don't box it when clearspace is available, don't outline the wordmark.
 
+## Build the family from a script, not by hand
+
+Past roughly six files, a lockup family stops being hand-authorable: 3 concepts × (submark, horizontal, vertical, reversed, mono) is 15–27 SVGs that all have to stay in sync. Author a **generator** — one Python file that emits the whole family — and treat the SVGs as build output.
+
+- **The script is the source of truth.** Edits go to the generator and everything regenerates. Never patch an emitted SVG; the next run silently reverts it. Keep it at `<brand>-brand/_kaynak/gen_logo.py` and say so in the handoff, or the next session hand-edits the output.
+- **Outline the wordmark, don't reference the font.** `<text>` renders wrong wherever the font isn't installed — which is every client machine. Shape with **uharfbuzz**, outline with **fontTools**, emit `<path>`. Full recipe in `image-generation.md` § "Vector by script".
+- **Parametrise the skeleton, not the shape.** R5's logotype family came from `glyph_R` / `glyph_5` builders taking width, weight, and counter as arguments — "wide monolith" and "condensed near-square" are two calls, not two drawings.
+- **Normalise every variant through one fit function.** A shared `fit(groups, box, margin)` that scales each assembled mark into a common box is what makes submark, horizontal, and vertical read as one family instead of three sizes.
+- Reversed and mono variants then come free: same geometry, one ink parameter.
+
+## Letterform constraints that bite
+
+Field notes from hand-built geometric marks. Each of these cost a rebuild:
+
+- **Stencil bridges need a `<mask>`, not `evenodd`.** A cutting rectangle that extends past the letter leaves its outer part as a single winding pass, so `fill-rule="evenodd"` paints it **solid** instead of clearing it.
+- **A geometric `R`'s leg cannot spring straight off the bowl.** Keep `legTopX = (bowl_outer − bowl_arc) − leg_width` greater than the stem width, or the leg grows *into* the stem. In heavy and condensed cuts this is the first constraint that binds — solve it before detailing the rest of the letter.
+- **Near-square beats wide for avatars.** A condensed logotype whose ratio approaches 1:1 works as favicon and avatar with no emblem at all — which can retire an entire symbol concept. Test the wordmark inside the square container *before* designing a submark for it (see the square-submark median above).
+- **Non-square marks break `<img>` containers.** Under `object-fit: contain`, any container whose aspect doesn't match the mark's pushes construction frames and rules outside the box. Set the container's aspect from the SVG's own `viewBox`.
+- **Dark grounds need the reversed file, not CSS.** An ink-filled SVG embedded via `<img>` can't be recoloured by the page, so a dark presentation band swallows it whole. Ship `-ters` / `-reversed` files and swap the `src`.
+
 ## Practical output
 
-- **Vector is the deliverable.** For geometric monograms and wordmarks, prefer true vector (SVG) — hand-author simple geometric marks, or use Figma / Magnific `images_generate_svg` / `images_to_svg`. See `image-generation.md`.
+- **Vector is the deliverable.** For geometric monograms and wordmarks, prefer true vector (SVG) — hand-author simple geometric marks, script the family (above), or use Figma / Magnific `images_generate_svg` / `images_to_svg`. See `image-generation.md`.
 - Export the family as: primary (SVG + PNG on transparent), reversed, mono, submark, favicon set. Always generate raster logos on a clean **white or transparent** background so they drop into mockups.
 - Keep every variant in one folder: `<brand>-brand/logo/`.

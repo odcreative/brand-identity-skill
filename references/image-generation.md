@@ -38,6 +38,26 @@ Priority order:
 3. **Magnific** — `images_generate` for concept exploration and richer/illustrative marks; `images_generate_svg` or `images_to_svg` to get vector out. Good for mascots, emblems, textured or illustrative logos, and fast concept rounds. **Always generate on a clean white/transparent background.**
 4. **Gemini `design` script** *(only if key+package confirmed)* — `python3 ~/.claude/skills/design/scripts/logo/generate.py --brand "X" --style <style> --industry <ind>`. Rich style/colour/industry knowledge base via its `search.py`.
 
+### Vector by script — wordmarks that survive a missing font
+
+Never ship a logotype as `<text>`: the client's machine won't have the font, and variable-font axes won't apply even where it does. Convert to outlines at build time.
+
+```python
+from fontTools.ttLib import TTFont
+from fontTools.varLib import instancer          # pin variable axes
+from fontTools.pens.svgPathPen import SVGPathPen
+from fontTools.pens.transformPen import TransformPen
+import uharfbuzz as hb
+```
+
+1. **Pin the axes first.** `instancer.instantiateVariableFont(tt, {"wght": 900, "wdth": 125})` — an expanded/heavy cut of a variable family (e.g. `Archivo[wdth,wght].ttf`) is an *instance*, not a style name. Do this before shaping so harfbuzz measures the real widths.
+2. **Shape with harfbuzz** for glyph ids + positions (correct kerning and optical spacing).
+3. **Outline with a pen:** `glyphset[name].draw(TransformPen(SVGPathPen(glyphset), t))`, where `t` carries the position harfbuzz returned plus any scale/skew. Emit `<path>` only.
+4. **Features for logotypes:** `{"liga": False, "clig": False, "dlig": False, "calt": False, "kern": True}`. Leaving ligatures on silently fuses letter pairs in a wordmark — kerning is the only feature you want.
+5. **Ring/arc text** (emblem seals) is the same pipeline with each glyph rotated onto a radius — one `arc_text()` helper covers the top and bottom arcs.
+
+**Python gotcha:** the default `python3` / venv on this machine stalls with fontTools. Use `/Library/Frameworks/Python.framework/Versions/3.14/bin/python3`. Fonts resolve from `~/Library/Fonts/`; a missing file must fail loudly, not fall back to a default face.
+
 Whatever the engine: produce **2–3 distinct concepts** first (different archetypes — e.g. a monogram, a negative-space mark, a wordmark), let the user pick, *then* build the full system around the winner. Reuse the exact chosen logo file across all mockups so the identity stays consistent.
 
 ## Mockups & applications

@@ -39,4 +39,16 @@ assets/                   # brand-board.html, brand-guidelines.html şablonları
 
 ---
 
-© OD Creative — v1.0.0
+## Değişiklikler
+
+**v1.1.0** — Saha dersleri işlendi (R5 logo konseptleri, Pattaya Skydiving logo redesign):
+- `logo-system.md` — logo ailesini script'ten üretme (generator = tek kaynak, parametrik glyph iskeleti, ortak `fit()`), harf formu kısıtları (stencil köprüsü `mask` ister, geometrik `R` bacağı, kareye yakın logotype avatar testi, ters varyant zorunluluğu)
+- `image-generation.md` — "Vector by script": uharfbuzz + fontTools ile outline'lanmış logotype, variable font ekseni pinleme, logotype için ligatür kapatma, Python yolu
+- `presentation-formats.md` — konsept-yön sunumu (format 9, öneri sayfası zorunlu) + headless deck yakalama kuralları
+- `color-systems.md` — paleti gerçek dünya kaynağından türetme (bayrak DNA'sı), eski rengi UI-only'ye indirme
+
+**v1.0.0** — İlk sürüm.
+
+---
+
+© OD Creative — v1.1.0

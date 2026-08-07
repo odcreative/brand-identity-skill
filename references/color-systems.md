@@ -71,6 +71,15 @@ Two numbers change how you choose:
 
 Sector conventions worth knowing before you break them: security skews **red 42%** (against the blue default); fintech **blue 50%**; ai-ml is the most achromatic at **20%**. Caveat: that corpus is 50% devtools — it says nothing about hospitality, food, or local services. For those briefs, ignore it and use the exemplars.
 
+## Deriving the palette from a real-world source
+
+When the brand sits inside a strong existing visual system — a country, a sport, a heritage material — the palette can be *derived* rather than invented, and it buys recognition before a word is read. Pattaya Skydiving's system is the Thai flag's red and navy (Siam Red `#E01A2B`, Freefall Navy `#101A46`) over cloud white.
+
+Two rules keep it from turning into costume:
+
+- **Take the hues, not the artefact.** The flag is the *source*, never an element in the mark. Encode it structurally instead — the ram-air canopy's five cells reading as the flag's five stripes.
+- **Legacy colours become UI-only, or they die.** The outgoing accent survived as an interface colour and was banned from the logo. State which layer each colour is allowed in (mark / UI / neither), or the old system leaks back through the website. And convert the site's palette in **one pass after the mark is chosen**, never in parallel with concept exploration.
+
 ## Delivery
 
 - Provide HEX + RGB + CMYK (and Pantone if print-critical) for every core swatch.

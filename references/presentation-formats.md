@@ -42,6 +42,29 @@ Dark, cinematic, single-subject shots — a person in dark clothing holding a ca
 
 App icon on a device home screen, in the browser tab, as macOS/iOS icons, and social avatars (Radesk's "Applications / Icon" pages). Show the submark surviving at real UI sizes and inside platform masks (squircle, circle).
 
+## 9. Concept-direction deck  ★ the decision moment
+
+When step 3 hands over 2–3 concepts, the deliverable is a **deck**, not a folder of SVGs. Working structure, one section per screen:
+
+**cover → brief recap → one full page per direction → decision page.**
+
+Each direction page carries the mark large, its lockup family small, the typeface it's built from, and one sentence on the idea. Name the directions (`01 SPEAR`, `02 SEAL`, `03 CANOPY`) — clients discuss names, not file paths.
+
+The decision page states **your recommendation**, with a primary and a secondary pick and the reason. A designer who presents three equal options makes the client do the design work. Nothing downstream (palette rollout, applications, guidelines) starts until this page is answered.
+
+---
+
+## Capturing an HTML deck headlessly
+
+The decks are HTML, so client-ready images come from Chrome headless. Rules learned the hard way:
+
+- **Fix the page height:** `.page { height: 100vh }`. Left as `min-height`, grid rows overflow into the next section.
+- **Don't grow `--window-size` to fit a long page.** `100vh` scales with the window, so a taller window changes the layout you're trying to capture. Keep `1440x900` and isolate one section per shot by injecting `section.page:not(:nth-of-type(N)) { display: none }`.
+- **`#fragment` navigation does not work headless** — the capture lands on page 1 regardless. Same fix: isolate by CSS, not by anchor.
+- **Iframes taller than ~8000px don't rasterise.** For long-page captures, use an anchored iframe with a ~2500px window and repeat down the page.
+- **CDP `captureBeyondViewport` inflates `vh`-based layouts.** Prefer section isolation over full-page capture whenever the design uses viewport units.
+- Serve with `python3 -m http.server --directory <dir>` — never `cd` first, the harness resets the shell's cwd between calls.
+
 ---
 
 ## Choosing per request
@@ -55,6 +78,7 @@ App icon on a device home screen, in the browser tab, as macOS/iOS icons, and so
 | Retail / product brand | Packaging repeat-grid (5) |
 | Premium / fashion / agency | Moody editorial (7) |
 | A digital product | Icon & app presentation (8) |
+| A pick between logo concepts | Concept-direction deck (9) |
 
 Default **Standard** delivery = brand board (1) + stationery (4) + 2–3 mockups (4/6) + guidelines deck (2).
 
