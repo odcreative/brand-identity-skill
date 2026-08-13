@@ -1,6 +1,6 @@
-# Logo Archive — 1,402 real production marks
+# Logo Archive — 1,401 real production marks
 
-The exemplar library (`reference-library.md`) is **aspirational** work: award-style identity posts, art-directed, never shipped at scale. This archive is the opposite and the complement — **1,402 logos that real companies actually ship**, mined from [gilbarbara/logos](https://github.com/gilbarbara/logos). Use the exemplars to set the *craft bar*; use this archive to answer *"what does this category actually look like, and how do I avoid looking like it?"*
+The exemplar library (`reference-library.md`) is **aspirational** work: award-style identity posts, art-directed, never shipped at scale. This archive is the opposite and the complement — **1,401 logos that real companies actually ship**, mined from [gilbarbara/logos](https://github.com/gilbarbara/logos). Use the exemplars to set the *craft bar*; use this archive to answer *"what does this category actually look like, and how do I avoid looking like it?"*
 
 Index: `assets/logo-archive/index.json` (~390 KB). Tool: `scripts/logo_archive.py`. SVGs are **not** vendored — 25 MB would bloat the skill — they stream from `cdn.svglogos.dev` on demand and cache locally.
 
@@ -38,7 +38,7 @@ scripts/logo_archive.py fetch stripe --out ./mockups/    # SVG for a mockup (see
 
 ## What the corpus actually says
 
-Measured across all 1,402 (regenerate with `build_index.py`):
+Measured across all 1,401 (regenerate with `build_index.py`):
 
 | Fact | Value | So what |
 |---|---|---|
@@ -47,25 +47,25 @@ Measured across all 1,402 (regenerate with `build_index.py`):
 | 3+ brand colours | 27.5% | Usually a multi-product suite (Slack, Figma), not a startup. |
 | Pure black/white | **12.6%** | A real, confident strategy (Vercel, Notion) — not a cop-out. |
 | Gradient | 19.8% | Fine in AI/dev; still a minority. |
-| Separable submark + lockup | **29.8%** (418) | Most tech brands ship *only* one form. |
+| Separable submark + lockup | **29.9%** (419) | Most tech brands ship *only* one form. |
 
 **Sector hue skews** (`palette <sector>` for the full picture):
 
 | Sector | n | Dominant hue | Achromatic |
 |---|---|---|---|
 | fintech | 28 | blue **50%**, orange 21% | 10.7% |
-| security | 36 | **red 42%**, blue 25% | 11.1% |
+| security | 35 | **red 42%**, blue 26% | 11.4% |
 | data | 132 | blue 39%, red 14%, purple 11% | 7.6% |
 | ai-ml | 30 | blue 33%, red/orange 13% | **20.0%** |
 | devtools | 705 | blue 31%, red 15%, orange 12% | 12.5% |
 
 Security skewing **red** against the overall blue default is the kind of category convention worth either honouring (fit in) or breaking (stand out) — deliberately, with the number in hand.
 
-**Submark geometry** (the 418 true pairs): median icon aspect **1.000** — 52% sit within 0.9–1.1. Submarks are square because avatars, favicons, and app icons are square. Median lockup aspect **4.23** (IQR 3.41–5.17), i.e. a horizontal lockup ≈ **4× as wide as tall**, and ≈ **4× the width of its own icon**. These are good default targets for step 4 of the workflow; deviating far from them usually means the lockup won't drop into real containers.
+**Submark geometry** (the 419 true pairs): median icon aspect **1.000** — 52% sit within 0.9–1.1. Submarks are square because avatars, favicons, and app icons are square. Median lockup aspect **4.23** (IQR 3.41–5.17), i.e. a horizontal lockup ≈ **4× as wide as tall**, and ≈ **4× the width of its own icon**. These are good default targets for step 4 of the workflow; deviating far from them usually means the lockup won't drop into real containers.
 
 ## ⚠️ The corpus is skewed — do not launder it as market data
 
-**706 of 1,402 brands are devtools** (50%). This is a *"collection for developers/DevOps/geeks"*, not a sample of business. It follows that:
+**705 of 1,401 brands are devtools** (50%). This is a *"collection for developers/DevOps/geeks"*, not a sample of business. It follows that:
 
 - **Thin sectors are anecdotes.** health n=1, travel-mobility n=4, enterprise-hr n=4. `palette` prints a warning below n=15 and it means it — a 100% bar over one brand is noise. Never cite these to a client.
 - **Absent categories are absent.** No hospitality, agriculture, legal, construction, local services. For an Ecovine or a Kidly brief this archive has **nothing** to say. Use `reference-library.md` and the exemplars.

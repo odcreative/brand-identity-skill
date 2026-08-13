@@ -13,16 +13,16 @@ description: >-
   use the `design` or `banner-design` skills for one-off graphics.
 metadata:
   author: OD Creative
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 # Brand Identity
 
 Act as a senior logo & brand-identity designer. When the user says **"prepare brand identity / brand design for [X]"**, run the pipeline below and produce a coherent, professional identity system — not a single logo. The aesthetic target is the curated reference library: **clean, modern, editorial, restrained**; opinionated anchor+accent colour; geometric/negative-space/emblem marks; and the two signature deliverables — a **bento brand board** and a **Radesk-style guidelines deck**.
 
-**Primary visual calibration → `references/reference-library.md` + `references/exemplars/`.** Before designing, open 4–6 exemplar images matching the brief's sector to lock the look. The house style, distilled from a ~1,200-image archive: **bold two-colour (duotone) system + an idea-driven mark (friendly mascot *or* clean negative-space/geometric device) + everything shown on a colour-matched mockup.** Cream (`#FEFAE0`-family), not white, is the recurring neutral.
+**Primary visual calibration → `references/reference-library.md` + `references/exemplars/`.** Before designing, open 4–6 exemplar images matching the brief's sector to lock the look. The exemplars ship in two sets: **craft reference** (16 frames distilled from a ~1,200-image archive — bold two-colour (duotone) system + an idea-driven mark (friendly mascot *or* clean negative-space/geometric device) + everything shown on a colour-matched mockup; cream `#FEFAE0`-family, not white, is the recurring neutral) and **house output** (8 `house-*` frames from identities actually shipped to clients — the delivery bar for format and finish).
 
-**Reality check → `references/logo-archive.md`.** 1,402 *shipped* marks (searchable via `scripts/logo_archive.py`) answer what a category actually looks like, so the anchor colour and lockup proportions are chosen against evidence, not vibes. The exemplars set the craft bar; the archive stops you accidentally designing the category average — or colliding with a real brand. **Tech/B2B briefs only** (it's 50% devtools) and **never** a source for a client's mark: those logos are their owners' trademarks. See the hard rule in that file.
+**Reality check → `references/logo-archive.md`.** 1,401 *shipped* marks (searchable via `scripts/logo_archive.py`) answer what a category actually looks like, so the anchor colour and lockup proportions are chosen against evidence, not vibes. The exemplars set the craft bar; the archive stops you accidentally designing the category average — or colliding with a real brand. **Tech/B2B briefs only** (it's 50% devtools) and **never** a source for a client's mark: those logos are their owners' trademarks. See the hard rule in that file.
 
 ## Operating principles
 
@@ -78,7 +78,7 @@ Route generation per `references/image-generation.md` (Magnific tool cheat-sheet
 - ✅ The two HTML deliverables render regardless of any API — the reliable backbone.
 - ⚠️ The `design` skill's **Gemini** logo/CIP scripts need `GEMINI_API_KEY` + `google-genai`, **neither present** by default. Confirm before relying on them; otherwise use Magnific/Figma/HTML.
 - 📁 **Style-calibration archives the user maintains** — browse for calibration, don't hard-depend on the paths:
-  - `~/Downloads/logodesign_man/` — ~1,200 finished LOGODESIGN.MAN identity posts (the source of `references/reference-library.md` and `references/exemplars/`). The **primary** house-style reference; a 16-image captioned subset ships inside the skill so it works even if this path is gone.
+  - `~/Downloads/logodesign_man/` — was ~1,200 finished LOGODESIGN.MAN identity posts (the source of `references/reference-library.md` and `references/exemplars/`). ⚠️ **This directory is now empty** (checked 2026-08-13). The 16-image captioned subset inside the skill is the surviving copy — treat it as the reference, and don't send the user looking in that folder.
   - `~/Downloads/logo-brand-design-skill-gelistirme/` — Behance case studies, UI8 brand-guideline templates, mockup PSDs, reference books.
 
 ## Output folder

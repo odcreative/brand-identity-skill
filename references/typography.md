@@ -27,6 +27,16 @@ Pick to match personality. All are free/near-ubiquitous unless noted:
 
 \* Premium/self-hosted fonts (Söhne, Canela, Gilroy, Satoshi, Clash…) are available via `ui-ux-pro-max`'s font library — use them when licensing is fine and the brand warrants it. Otherwise default to the Google-hosted picks above so deliverables render everywhere.
 
+## A second, technical face — scoped hard
+
+Some brands need a face for machine-ish strings: policy numbers, dates, reference codes, versal labels. Venüs Sigorta pairs **Manrope** (300/500/800) with **IBM Plex Mono**, and the rule shipped with it is what makes it work: **mono is for data strings only — never headings, never body.** An unscoped second family becomes a second voice within a week.
+
+Related discipline from the same system: **hierarchy comes from weight, not colour.** Once colour carries hierarchy, the accent stops being an accent.
+
+## Licensed display faces: name the swap at concept time
+
+If a concept is built on a licensed font (Gilroy, Söhne, Canela, Clash…), say so *on the direction page* and name the free substitute it would move to if that direction wins (Gilroy → Poppins/Outfit). Discovering the licence question after the client has chosen turns a decision into a re-draw.
+
 ## Type scale
 
 Use a modular scale (ratio ~1.25 minor-third for UI, ~1.333 perfect-fourth for editorial). Example (16px base, 1.25):

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-logo_archive — search 1,402 real production brand logos (gilbarbara/logos) for
+logo_archive — search 1,401 real production brand logos (gilbarbara/logos) for
 benchmarking, palette calibration, and mockup assets.
 
     ./logo_archive.py search stripe              # by name

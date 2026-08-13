@@ -29,6 +29,15 @@ The verified tool names (prefix `mcp__claude_ai_Magnific__`):
 
 Reusable assets (a recurring character, product, style LoRA, location) live in the Magnific **library** (`library_list`/`library_show`) and can be passed as typed `references[]` to keep a subject consistent across a set.
 
+### Magnific in practice
+
+- **Model-name trap:** "Nano Banana 2" is `imagen-nano-banana-2-flash`. The id *without* `-flash` is the Pro model. Picking the wrong one silently changes both look and cost.
+- **Budget before you fan out.** ~75 credits per 2K image; a 36-frame set is ~2,700. An unlimited plan on the web does **not** apply over MCP — credits are consumed.
+- **One recipe for the whole set.** Write a single art-direction sentence and vary only the subject. Venüs Sigorta's 10 frames all ran: *"cinematic editorial, Mediterranean Antalya, 35/50/85mm, shallow DOF, natural low-angle light, deep shadows, muted limestone + charcoal + slate, **exactly one crimson red accent**, documentary realism unposed, no text/logos."* Consistency was high enough to accept the set in one pass. Naming the accent colour **and its count** is what keeps a brand rule visible in generated imagery.
+- Always end prompts with **"no text, no watermark"** — generators letter fake words onto signage and packaging otherwise.
+- **Output is PNG and heavy.** `sips -s format jpeg -s formatOptions 82 -Z 1600` took one set from 60 MB to 15 MB with no visible loss at deck scale.
+- **The connector can be unauthorised in a given session** even when it works elsewhere (Renta's whole package was built with zero AI imagery for this reason). Check first, and have the HTML/CSS + real client photography path ready — it is a legitimate deliverable, not a downgrade.
+
 ## Logos
 
 Priority order:
@@ -57,6 +66,10 @@ import uharfbuzz as hb
 5. **Ring/arc text** (emblem seals) is the same pipeline with each glyph rotated onto a radius — one `arc_text()` helper covers the top and bottom arcs.
 
 **Python gotcha:** the default `python3` / venv on this machine stalls with fontTools. Use `/Library/Frameworks/Python.framework/Versions/3.14/bin/python3`. Fonts resolve from `~/Library/Fonts/`; a missing file must fail loudly, not fall back to a default face.
+
+**Contour splitting gotcha (TrueType):** a contour whose points are *all* off-curve does not begin with `moveTo` — the pen emits `qCurveTo(..., None)`. Split contours on `closePath`/`endPath`, never on `moveTo`, or every glyph collapses to a single contour and counters fill in.
+
+**When the font has no ligatures or alternates**, character has to come from composition instead: tracking, case, and the choice of face (an *ReverseItalic* backslant is a strong retro lever), plus a simple disc / ring / frame / bar / overlap device. Do not wait for a font to hand you the idea.
 
 Whatever the engine: produce **2–3 distinct concepts** first (different archetypes — e.g. a monogram, a negative-space mark, a wordmark), let the user pick, *then* build the full system around the winner. Reuse the exact chosen logo file across all mockups so the identity stays consistent.
 

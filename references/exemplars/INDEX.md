@@ -1,11 +1,17 @@
 # Exemplars — visual calibration set
 
-Sixteen representative frames from the LOGODESIGN.MAN archive, one per pattern. **Open a handful
-that match your brief's sector before designing** — they lock the house look faster than any text.
-Full pattern language: `../reference-library.md`. Source archive (~1,200 images):
-`~/Downloads/logodesign_man/`.
+Two sets. **Open a handful that match your brief's sector before designing** — they lock the look
+faster than any text. Full pattern language: `../reference-library.md`.
 
-Copy the *feel* (duotone + idea-mark + colour-matched mockup) — never a specific mark.
+1. **Craft reference** (16 frames, `mascot-*` / `negative-space-*` / `emblem-*` / `brand-board-*` …) —
+   representative frames from the LOGODESIGN.MAN archive, one per pattern. Copy the *feel*
+   (duotone + idea-mark + colour-matched mockup) — never a specific mark.
+   ⚠️ The source archive `~/Downloads/logodesign_man/` **is now empty**; this shipped subset is the
+   only surviving copy. Do not rebuild the set from that path expecting it to be there.
+2. **House output** (8 frames, `house-*`) — pages from identities actually shipped to clients
+   (Venüs Sigorta, Renta). These are the delivery bar: what a finished board, mockup scene, and
+   social surface look like when they leave this studio. Match these for *format and finish*;
+   match set 1 for *idea and craft*.
 
 | File | Pattern it teaches | Sector cue |
 |---|---|---|
@@ -25,3 +31,16 @@ Copy the *feel* (duotone + idea-mark + colour-matched mockup) — never a specif
 | `brand-board-swatches-musicplanet.jpg` | Bento brand board: icon cards + swatches(HEX/RGB/CMYK) + Gilroy specimen | Media / music |
 | `brand-board-swatches-captureking.jpg` | Brand board with swatch codes incl. LAB/GrayScale + Montserrat specimen | Photography |
 | `bento-identity-grid-pixelrabbit.jpg` | Full "everything at a glance" bento identity grid | Creative studio |
+
+## Set 2 — house output (shipped)
+
+| File | What it teaches | Brand |
+|---|---|---|
+| `house-brand-board-tall-venus.jpg` | Tall 1600×2400 bento board: explicit `grid-area` tiles, ground one step darker than the dark tiles, one accent moment | Venüs Sigorta |
+| `house-brand-board-dark-renta.jpg` | Dark industrial bento board built with zero AI imagery — real project photography only | Renta |
+| `house-social-photo-accent-venus.jpg` | Social post over cinematic photography, the "exactly one accent" rule visible in a single frame | Venüs Sigorta |
+| `house-css-mockup-scene-renta.jpg` | Mockup scene composed in HTML/CSS, not generated — the reliable fallback path, at delivery quality | Renta |
+| `house-environment-flag-renta.jpg` | Field/environment application (site flag) for an industrial brand | Renta |
+| `house-email-signature-venus.jpg` | Email-signature strip with the raster badge mail clients require | Venüs Sigorta |
+| `house-story-cover-circular-renta.jpg` | Instagram static-story cover sized for the circular mask (oversized glyph, small label) | Renta |
+| `house-card-front-venus.jpg` | Business card at delivery pixel size, exported element-wise from an HTML artboard | Venüs Sigorta |

@@ -28,13 +28,44 @@ From the reference library and the canon (Airey, *Logo Design Love*; *Logo Moder
 
 ### Proportions that real lockups hit
 
-Measured across the 418 brands in `references/logo-archive.md` that ship a separable submark *and* a full lockup:
+Measured across the 419 brands in `references/logo-archive.md` that ship a separable submark *and* a full lockup:
 
 - **Submarks are square.** Median icon aspect **1.000**; 52% fall within 0.9–1.1. Not an aesthetic preference — avatars, favicons, and app tiles are square containers, and a non-square submark loses area in every one of them.
 - **Horizontal lockups are ~4:1.** Median aspect **4.23** (IQR 3.41–5.17), and ≈4× the width of the brand's own icon. Drift much past ~6:1 and the lockup stops fitting real headers and signage; much under ~3:1 and it reads as a stacked mark, not a horizontal one.
 - **Only 29.8% of tech brands ship both forms at all.** A submark is a deliberate investment, justified when the brand needs an avatar/app presence. Say why it exists rather than producing it by reflex.
 
 Design against these, then check: `scripts/logo_archive.py pairs --sector <sector>`.
+
+## When the client already has a mark
+
+Most identity work is not a blank page — a logo exists and the job is to build a *system* around it. Two moves do most of the work:
+
+- **Measure the mark, then derive everything from one curve.** Venüs Sigorta's logo is a roof; its arc's measured centreline (`M 501 907 Q 1079 233 1657 907`, apex `1079,570`) became the single generator for three graphic devices — concentric roof layers, a tiled roof-tile grid, and a vertical "cover lines" field whose top contour follows the arc. A graphic language derived from a measured curve of the mark cannot drift from it; one invented alongside it always does.
+- **Group the existing paths, don't redraw them.** Load the client SVG's path data and group indices into named parts (Venüs: roof `[1,2]`, "venüs" `[0,3,4,5,6,8,9]`, "SİGORTA" `[7,10..16]`; Renta: `0,1` = letters, `2,3` = red tail, `4,5,6` = tent). The generator then assembles lockups from parts. Redrawing "close enough" is the fastest way to ship a mark that fails the client's own eye test.
+- **Derive the lockups they never had.** Both brands arrived with one horizontal file. The horizontal lock, the stacked lock, and a square **badge** (emblem + one letter, as a tile) were new — and the badge is what makes the avatar, the favicon, and the email-signature PNG possible.
+- **Cutting colours is a legitimate system decision.** Renta's mark went 3 colours → 2 (red wordmark + ink tent) because the thin `#E3E3E2`/`#868686` grey rules disappeared at small size and in print. Keep the outgoing version as `<name>-miras.svg` in the archive and say in the guidelines which one supersedes it.
+
+State min size in **both units** — Renta: full lock 120 px / 26 mm, emblem 32 px / 10 mm — and derive the clearspace `X` from the mark (half the letter height there).
+
+## Multi-line logotypes
+
+A stacked, text-only logotype (no symbol) lives or dies on the optical alignment of its lines. From the İstanbul Sanal Ofis round, where all three directions were type-only:
+
+- **Justify with the `wdth` axis, never by scaling.** Setting three lines to equal width by stretching or squashing the glyphs is visible immediately. A variable family with a width axis (Archivo `wdth`) gives real, drawn widths at every step.
+- **Open the narrow line; do not squeeze the wide one.** Tightening the wide line runs into the negative-tracking limit and then silently overflows the viewBox instead of failing. Widening the narrow line has headroom.
+- **Lay out to the real ink bbox, not cap height.** Turkish `İ` carries a dot above the cap line. Anchored to cap height, it either escapes the viewBox or collides with the line above.
+- **A dotted accent is an ownable device.** The two `İ` dots in the accent colour gave that direction its whole identity — no symbol required.
+
+## Emblem shapes that read as something else
+
+Every abstract emblem is checked against what it accidentally resembles. Two real rejections from one set:
+
+- **Three flat parallel rules read as a hamburger menu.** Curving them into waves fixed it.
+- **A ring cut from a filled circle reads as the Target logo.** Squaring the container fixed it.
+
+Squint at the emblem at favicon size and name the first thing you see. If it is a UI affordance or another brand, the shape is wrong regardless of the concept behind it.
+
+**Balance the forms across a set.** When several marks ship together (a 4-brand concept set), give them deliberately different geometry — one organic, one square, one circular, one linear — so the set reads as a range instead of four attempts at the same idea.
 
 ## Construction grid
 

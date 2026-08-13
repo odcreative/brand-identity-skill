@@ -55,7 +55,7 @@ Note the reference move: brand-colour **full-bleed backgrounds**. Ecovine packag
 
 ## Check the anchor against reality before locking it
 
-The table above is a *starting* vector. Before you commit the anchor, test it against 1,402 shipped marks (`references/logo-archive.md`):
+The table above is a *starting* vector. Before you commit the anchor, test it against 1,401 shipped marks (`references/logo-archive.md`):
 
 ```bash
 scripts/logo_archive.py palette fintech           # the category convention
@@ -79,6 +79,12 @@ Two rules keep it from turning into costume:
 
 - **Take the hues, not the artefact.** The flag is the *source*, never an element in the mark. Encode it structurally instead — the ram-air canopy's five cells reading as the flag's five stripes.
 - **Legacy colours become UI-only, or they die.** The outgoing accent survived as an interface colour and was banned from the logo. State which layer each colour is allowed in (mark / UI / neither), or the old system leaks back through the website. And convert the site's palette in **one pass after the mark is chosen**, never in parallel with concept exploration.
+
+## Say which surface each colour is allowed on
+
+A palette that works on screen often needs one more neutral in print and social, and the two must not be swapped by accident. Venüs Sigorta's identity layer added a warm neutral, **Kireç `#EFEAE1`**, for stationery and social while the web kept the cooler **Sis `#F5F6F8`** — both are brand neutrals, each scoped to its surface. Write the scope into the swatch table (`web` / `print + social` / `UI only` / `never in the mark`), not into a conversation. The same discipline retires a legacy colour cleanly (see the section above).
+
+**Turn the 10% accent rule into a written brand rule.** "Red never exceeds 10% of any composition" is checkable by a designer who has never met you; "use the accent sparingly" is not. Put the number in the guidelines.
 
 ## Delivery
 

@@ -40,6 +40,16 @@ Fill `[BRAND]`, `[LOGO]`, `[COLOR]`, `[SECTOR]`. Keep the logo/colour/type consi
 - One accent moment; the rest restrained. Consistent radius/shadow language across the set.
 - Backgrounds are clean and on-brand; no stock-photo clutter fighting the mark.
 
+## Exporting HTML applications at delivery size
+
+When the applications are built as HTML artboards (the reliable path — see below), export them element-by-element rather than screenshotting pages:
+
+- **`locator.screenshot()` on the artboard element** gives the exact delivery pixel size. Tag each artboard with its spec (`.artboard[data-size="1004x650"]`) and drive the export from that attribute, so the file name and the pixels can never disagree.
+- **Print items need a second pass.** Anything at 300 dpi (A4 letterhead, e-signature strips) must render in its **own browser context** with `device_scale_factor=2`; mixing scale factors in one context silently gives you the wrong one.
+- **Email signatures need a raster mark.** Mail clients do not render SVG — ship a PNG badge (144 px works) alongside the HTML signature.
+- **Playwright `set_content` fails on an SVG document** (`Only HTML documents support open()`). Write a temporary HTML file that embeds the SVG and `goto` it.
+- **Circular-crop covers need oversized glyphs.** An Instagram static-story cover icon at 300 px looks weak inside the circular mask; 380 px icon + 46 px label is the size that holds.
+
 ## Fallback when AI mockups aren't available
 
 If no image generator is reachable, **compose mockups in HTML/CSS** (flat-lay cards, device frames, signage panels) using the brand tokens and deliver as an `Artifact`, or use the **PSD mockup libraries** the user keeps in `~/Downloads/logo-brand-design-skill-gelistirme/Mockups/` (Studio Stationery, Dusk, Slash, Storefront, Signage, Packaging, City Advertising, Device) as smart-object templates in Photoshop/Figma. See `image-generation.md`.

@@ -65,6 +65,19 @@ The decks are HTML, so client-ready images come from Chrome headless. Rules lear
 - **CDP `captureBeyondViewport` inflates `vh`-based layouts.** Prefer section isolation over full-page capture whenever the design uses viewport units.
 - Serve with `python3 -m http.server --directory <dir>` — never `cd` first, the harness resets the shell's cwd between calls.
 
+## HTML deck CSS that bites
+
+Every one of these shipped broken once before it was found:
+
+- **Give bento tiles explicit `grid-area`.** With spanning tiles, auto-placement behaves sparsely and punches a hole in the middle of a row. `grid-area: r1/c1/r2/c2` on every tile, no exceptions.
+- **The board's ground must be one step darker than its dark tiles** (`#0B0D10` behind `#14171C` tiles), or the dark cards lose their edges and the grid dissolves.
+- **A readability scrim belongs only on photo tiles.** `::before` scrims added for label contrast look like a stray box on a flat dark tile.
+- **`align-items` defaults to `stretch`** — in a mockup grid that stretches a small card (an e-signature) to the height of a tall one (an A4), leaving a crater under it. Set `align-items: start` on the grid.
+- **`.heading > * { position: relative }` kills an absolutely-positioned section number.** Specificity 0,1,1 beats the number's own 0,1,0, so it rejoins the flow and shoves the heading down. Exclude it: `:not(.number)`.
+- **Never make an `<li>` a grid or flex container** if its text contains inline `<b>`/`<em>` — the inline element becomes a grid item and the sentence breaks apart. Do bullets with `::before` + `position: absolute` + `padding-left`.
+- **Inline SVG sized `width:auto; height:100%` inside a flex parent resolves circularly** and the mark is cropped. Write an explicit px width from the `viewBox` ratio.
+- **On a contact sheet, `svg { max-height: 100% }` does not equalise card heights.** Use `width:100%; height:100%` plus an explicit `preserveAspectRatio`.
+
 ---
 
 ## Choosing per request

@@ -49,6 +49,23 @@ Short taglines carry the positioning in the reference work — write 3–5 and p
 
 Formula options: **[verb] + [aspiration], [modifier]** (Growing Tomorrow, Naturally) · **[Benefit] that [outcome]** (Intelligence that Moves Your Business) · **[Emotion] [Verb] Here** (Curiosity Begins Here). Keep to ~2–5 words.
 
+## Designing against a named rival (the mirror method)
+
+When the brief is "something like X, but ours", the productive move is not to differentiate everything. **Keep the rival's section skeleton and invert its single weakest decision.** Four concept brands built against four competing themes each turned exactly one dial:
+
+| Brand | Rival | Dial that was turned |
+|---|---|---|
+| DECANT | Kyoto | aesthetic silence → a measured dose |
+| OCHRE | Sahara | enter by skin type → enter by pigment tone |
+| GAUGE | Zurich | an invented teal → an accent that physically exists on set |
+| STRAND | Mayfair | a routine tied to a person → a routine tied to a texture |
+
+One inversion is legible to a client and defensible in a sentence. Five inversions read as a different product.
+
+## When the language is blocked, ship the visual system anyway
+
+If the copy deck has been rejected and no approved wording exists, **do not invent a slogan to fill the templates**. Fill them with copy already approved and live (headlines from the site, proof numbers), and say in the handoff that the visual system is deliberately independent of the pending language decision. Renta's identity package shipped this way after the language book was turned down twice — and survived the eventual copy decision unchanged.
+
 ## Moodboard direction (state it in words)
 
 Before generating anything, write a 3–4 line art-direction paragraph: the *feeling*, the material world (stone, matte plastic, produce, glass storefront…), the light (bright/airy vs. dusk/moody), and one or two "anti-references" (what to avoid). This paragraph becomes the seed for image-generation prompts and keeps every asset coherent.
